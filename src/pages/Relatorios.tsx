@@ -18,7 +18,7 @@ type PeriodFilter = "3m" | "6m" | "12m" | "all";
 export default function Relatorios() {
   const { data: pedidos = [] } = usePedidos();
   const [period, setPeriod] = useState<PeriodFilter>("6m");
-  const isMobile = useIsMobile();
+  
 
   const paidPedidos = useMemo(() => {
     const now = new Date();
@@ -95,8 +95,6 @@ export default function Relatorios() {
     return { totalFrete, freteMedio, freteGratis, fretePago, percentFrete };
   }, [paidPedidos]);
 
-  const topStatesChart = byState.slice(0, 8);
-  const topCitiesChart = byCity.slice(0, 10);
 
   return (
     <AppLayout>
@@ -188,23 +186,6 @@ export default function Relatorios() {
           </CardContent>
         </Card>
 
-        {/* Top Cities Chart */}
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-base">Top 10 Cidades por Receita</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={350}>
-              <BarChart data={topCitiesChart} layout="vertical" margin={{ left: isMobile ? 80 : 120 }}>
-                <XAxis type="number" tickFormatter={(v) => `R$${(v / 1000).toFixed(0)}k`} />
-                <YAxis type="category" dataKey="cidade" width={isMobile ? 75 : 115} tick={{ fontSize: 11 }} />
-                <Tooltip formatter={(v: number) => formatCurrency(v)} />
-                <Bar dataKey="receita" name="Receita" fill="hsl(350, 45%, 50%)" radius={[0, 4, 4, 0]} />
-                <Bar dataKey="frete" name="Frete" fill="hsl(30, 60%, 55%)" radius={[0, 4, 4, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
 
         {/* State Table */}
         <Card>
