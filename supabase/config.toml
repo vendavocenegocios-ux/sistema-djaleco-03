@@ -1,0 +1,22 @@
+project_id = "doaaarwdaayioxjnedpj"
+
+[functions.nuvemshop-sync]
+verify_jwt = false
+
+[functions.nuvemshop-webhook]
+verify_jwt = false
+
+[functions.pagarme-extrato]
+verify_jwt = false
+
+[functions.pagarme-fees-sync]
+verify_jwt = false
+
+[functions.nuvemshop-products]
+verify_jwt = false
+
+[functions.superfrete-tracking]
+verify_jwt = false
+
+[functions.nuvemshop-abandoned]
+verify_jwt = false
