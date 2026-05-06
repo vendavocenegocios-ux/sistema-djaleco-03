@@ -202,54 +202,6 @@ export default function Relatorios() {
           </CardContent>
         </Card>
 
-        {/* Charts Row */}
-        <div className="grid md:grid-cols-2 gap-4">
-          {/* Top States Chart */}
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-base">Receita por Estado</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ResponsiveContainer width="100%" height={300}>
-                <BarChart data={topStatesChart} layout="vertical" margin={{ left: isMobile ? 60 : 80 }}>
-                  <XAxis type="number" tickFormatter={(v) => `R$${(v / 1000).toFixed(0)}k`} />
-                  <YAxis type="category" dataKey="estado" width={isMobile ? 55 : 75} tick={{ fontSize: 12 }} />
-                  <Tooltip formatter={(v: number) => formatCurrency(v)} />
-                  <Bar dataKey="receita" name="Receita" fill="hsl(350, 45%, 65%)" radius={[0, 4, 4, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
-            </CardContent>
-          </Card>
-
-          {/* Origin Pie */}
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="text-base">Vendas por Origem</CardTitle>
-            </CardHeader>
-            <CardContent className="flex items-center justify-center">
-              <ResponsiveContainer width="100%" height={300}>
-                <PieChart>
-                  <Pie
-                    data={byOrigin}
-                    dataKey="receita"
-                    nameKey="origem"
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={100}
-                    label={({ origem, percent }) => `${origem} ${(percent * 100).toFixed(0)}%`}
-                  >
-                    {byOrigin.map((_, i) => (
-                      <Cell key={i} fill={COLORS[i % COLORS.length]} />
-                    ))}
-                  </Pie>
-                  <Tooltip formatter={(v: number) => formatCurrency(v)} />
-                  <Legend />
-                </PieChart>
-              </ResponsiveContainer>
-            </CardContent>
-          </Card>
-        </div>
-
         {/* Top Cities Chart */}
         <Card>
           <CardHeader className="pb-2">
