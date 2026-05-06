@@ -12,18 +12,6 @@ function formatCurrency(v: number) {
   return new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(v);
 }
 
-const COLORS = [
-  "hsl(350, 45%, 65%)",
-  "hsl(350, 45%, 50%)",
-  "hsl(350, 45%, 75%)",
-  "hsl(30, 60%, 55%)",
-  "hsl(200, 50%, 55%)",
-  "hsl(150, 40%, 50%)",
-  "hsl(270, 40%, 60%)",
-  "hsl(45, 70%, 55%)",
-  "hsl(0, 50%, 55%)",
-  "hsl(180, 40%, 50%)",
-];
 
 type PeriodFilter = "3m" | "6m" | "12m" | "all";
 
